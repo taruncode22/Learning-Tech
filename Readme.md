@@ -1,5 +1,9 @@
-**#List of Work**
+# 📋 *List of Work*
 
-**##Web-Devlopment**
-1. To-Do list (Javascript)
-2. Weather App using APIs (Javascript)
+## 🌐 *1. Web Development*
+
+#### 📝 *(A) JavaScript*
+
+1. 🗒️ To-Do List with local-storage
+2. 🌦️ Weather App using APIs
+3. 🛒 E-commerce Cart *(without localStorage)*

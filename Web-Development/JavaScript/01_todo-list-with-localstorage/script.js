@@ -43,14 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     li.querySelector("button").addEventListener("click", (e) => {
       e.stopPropagation(); //prevent toggle from firing
-      tasks = tasks.filter((t) => t.id === task.id); 
+      tasks = tasks.filter((t) => t.id === task.id);
       li.remove(); //Revomes the task on pressing delete button when id of eventlister is same as the task id 
       saveTasks();
     });
 
     todoList.appendChild(li);
   }
-// fuction to add tasks to the local Storage
+  // fuction to add tasks to the local Storage
   function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
