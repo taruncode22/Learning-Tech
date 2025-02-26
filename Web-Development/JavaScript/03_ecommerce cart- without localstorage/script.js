@@ -14,14 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalPriceDisplay = document.getElementById("total-price");
     const checkOutBtn = document.getElementById("checkout-btn");
 
-    products.forEach(product) => {
+    products.forEach((product) => {
         const productDiv = document.createElement("div");
         productDiv.classList.add("product");
         productDiv.innerHTML =
             `<span>${product.name} - $${product.price.toFixed(2)}</span>
-    <button data-id = "${product.id}">Add To Cart</button>`;
+    <button data-id= "${product.id}">Add To Cart </button>`;
         productList.appendChild(productDiv);
-    };
+    });
 
     productList.addEventListener("click", (e) => {
         if (e.target.tagname === "BUTTON") {
@@ -32,11 +32,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function addToCart(product) {
-
+        cart.push(product)
+        renderCart();
     }
 
     function renderCart() {
+        cartItem.innerText = "";
+        let totalPrice = 0;
 
+        if (cart.length > 0) {
+            emptyCartMessage.classList.add("hidden");
+            cartTotalMessage.classList.remove("hidden");
+            cart.forEach((item, index) => {
+                totalPrice += item.price;
+                const cartItem = document.createElement("div");
+                cartItem.innerHTML = `
+                ${item.name} - $${item.price.toFixed(2)}
+                `;
+                cartItem.appendChild(cartItem);
+                totalPriceDisplay.textContent = `${totalPrice.toFixed(2)}`;
+            });
+        }else {
+            emptyCartMessage.classList.remove("hidden");
+            totalPriceDisplay.textContent = `$0.00`;
+        }
     }
 
     checkOutBtn.addEventListener("click", () => {
@@ -44,6 +63,4 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Checkout Successfully");
         renderCart();
     });
-
-
 })
