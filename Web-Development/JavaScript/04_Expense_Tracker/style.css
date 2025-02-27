@@ -16,7 +16,7 @@ height: 100vh;
 }
 
 .container {
-width: 400px;
+width: 100vh;
 padding: 20px;
 background-color: rgb(55, 119, 192);
 border-radius: 15px;
