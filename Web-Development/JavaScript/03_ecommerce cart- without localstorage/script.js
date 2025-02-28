@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cart = [];
 
     const productList = document.getElementById("product-list");
-    const cartItem = document.getElementById("cart-items");
+    const cartItems = document.getElementById("cart-items");
     const emptyCartMessage = document.getElementById("empty-cart");
     const cartTotalMessage = document.getElementById("cart-total");
     const totalPriceDisplay = document.getElementById("total-price");
@@ -24,20 +24,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     productList.addEventListener("click", (e) => {
-        if (e.target.tagname === "BUTTON") {
-            const productId = parseInt(e.target.getattribute("data-id"));
-            const product = product.find((p) => p.id === productId);
+        if (e.target.tagName === "BUTTON") {
+            const productId = parseInt(e.target.getAttribute("data-id"));
+            const product = products.find((p) => p.id === productId);
             addToCart(product);
         }
     });
 
     function addToCart(product) {
-        cart.push(product)
+        cart.push(product);
         renderCart();
     }
 
     function renderCart() {
-        cartItem.innerText = "";
+        cartItems.innerText = "";
         let totalPrice = 0;
 
         if (cart.length > 0) {
@@ -49,10 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 cartItem.innerHTML = `
                 ${item.name} - $${item.price.toFixed(2)}
                 `;
-                cartItem.appendChild(cartItem);
+                cartItems.appendChild(cartItem);
                 totalPriceDisplay.textContent = `${totalPrice.toFixed(2)}`;
             });
-        }else {
+        } else {
             emptyCartMessage.classList.remove("hidden");
             totalPriceDisplay.textContent = `$0.00`;
         }
@@ -63,4 +63,4 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Checkout Successfully");
         renderCart();
     });
-})
+});
