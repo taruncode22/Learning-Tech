@@ -5,11 +5,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const questionContainer = document.getElementById("question-container");
     const questionText = document.getElementById("question-text");
     const choicesList = document.getElementById("choices-list");
-    const resultContainer = document.getElementById("result-Container");
+    const resultContainer = document.getElementById("result-container");
     const scoreDisplay = document.getElementById("score");
 
     const questions = [
-
+        {
+            question: "Which S3 encryption technique should the Architect use?",
+            choices: ["A. Use S3 client-side encryption with an AWS KMS key.", "B. Use S3 client-side encryption with a client-side master key.", "C. Use S3 server-side encryption with an AWS KMS key.", "D. Use S3 server-side encryption with customer provided key."],
+            answer: "B. Use S3 client-side encryption with a client-side master key.",
+          },
+          {
+            question: "Which of the following channels shares a collection of offerings to help you achieve specific business outcomes related to enterprise cloud adoption through paid engagements in several specialty practice areas?",
+            choices: ["A. AWS Enterprise Support", "B. Concierge Support", "C. AWS Professional Services", "D. AWS Technical Account Manager"],
+            answer: "C. AWS Professional Services",
+          },
+          {
+            question: "To launch a new system in AWS but they do not have an employee who has AWS-related expertise. Which of the following AWS channels can instead help the company to build, migrate, and manage their workloads and applications on AWS ?",
+            choices: [
+              "A. AWS Partner Network Technology Partners",
+              "B. AWS Marketplace",
+              "C. AWS Partner Network Consulting Partners",
+              "D. Technical Account Management",
+            ],
+            answer: "C. AWS Partner Network Consulting Partners",
+          },
     ];
 
     let currentQuestionIndex= 0;
@@ -26,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    restartBtn.addEventListener("click", => {
+    restartBtn.addEventListener("click", () => {
         currentQuestionIndex = 0;
         score =  0;
         resultContainer.classList.add("hidden")
@@ -54,8 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function selectAnswer(choice) {
         const correctAnswer = questions[currentQuestionIndex].answer;
-        if (choice === correctAnswer)
-        {
+        if (choice === correctAnswer){
             score++;
         }
         nextBtn.classList.remove("hidden");
